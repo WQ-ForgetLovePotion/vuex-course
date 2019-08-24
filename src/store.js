@@ -15,19 +15,28 @@ export default new Vuex.Store({
       {
         id: 2,
         title: 'todo iten 2',
-        complated: false
+        complated: true
       },
 
       {
         id: 3,
         title: 'todo iten 3',
-        complated: false
+        complated: true
       }
 
     ]
   },
   getters: {
+    count: state => ++state.count,
+    complatedTodos: state => state.todos.filter(todo => todo.complated),
+    complatedTodosCount: (state, getters) => getters.complatedTodos.length,
+    getTodosById: state => id => state.todos.find(todo => todo.id == id)
 
+    // complatedTodos: function (state) {
+    //   return state.todos.filter(function (todo) {
+    //     return todo.complated
+    //   })
+    // }
   },
   mutations: {
 
